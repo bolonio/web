@@ -11,6 +11,9 @@ Wordpress2016.overrideThemeStyles = () => {
     "article a.gatsby-resp-image-link": {
       boxShadow: `none`,
     },
+    "article .gatsby-resp-image-wrapper": {
+      maxWidth: "100% !important",
+    },
     "article a": {
       color: "inherit",
       textDecoration: `none`,
@@ -41,13 +44,13 @@ Wordpress2016.overrideThemeStyles = () => {
       color: `#0c1e29`,
       fontWeight: 400,
       lineHeight: 1.25,
-      fontSize: `1.5rem`,
+      fontSize: `1.75rem`,
     },
     h4: {
       color: `#0c1e29`,
       fontWeight: 400,
       lineHeight: 1.25,
-      fontSize: `1.75rem`,
+      fontSize: `1.5rem`,
       letterSpacing: `inherit`,
       textTransform: `inherit`,
     },
@@ -55,7 +58,7 @@ Wordpress2016.overrideThemeStyles = () => {
       color: `#0c1e29`,
       fontWeight: 400,
       lineHeight: 1.25,
-      fontSize: `1.25rem`,
+      fontSize: `1.5rem`,
     },
     p: {
       color: `#485a64`,
@@ -70,6 +73,9 @@ Wordpress2016.overrideThemeStyles = () => {
     },
     ".gatsby-highlight": {
       fontFamily: `Montserrat, sans-serif !important`,
+    },
+    ".language-text": {
+      padding: ".2em 0.5em !important",
     },
   }
 }

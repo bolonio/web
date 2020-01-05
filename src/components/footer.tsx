@@ -52,12 +52,14 @@ export const Footer = () => {
       <Content>
         <StyledFooter>
           <FooterText>Adrián Bolonio - {new Date().getFullYear()}</FooterText>
+          {/*
           <FooterText>
             <FooterIcon src={twitter} alt="Logo" />
             <FooterIcon src={instagram} alt="Logo" />
             <FooterIcon src={github} alt="Logo" />
             <FooterIcon src={linkedin} alt="Logo" />
           </FooterText>
+           */}
         </StyledFooter>
       </Content>
     </FooterContainer>

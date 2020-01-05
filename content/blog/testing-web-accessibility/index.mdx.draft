@@ -1,8 +1,8 @@
 ---
-title: How does your website sound like?
-date: 2019-12-01
+title: Testing Web Accessibility
+date: 2020-01-05
 description: Our role as frontend and web developers is to create clear interfaces to make people understand and care about data, independently of their disabilities or impairments.
-image: ./wrong-a11y.jpeg
+image: ./a11y-is-not-a-feature.jpeg
 tags:
   - testing
   - accessibility
@@ -21,47 +21,46 @@ But a lot of times we don’t think about the user experience for everyone, peop
 
 Why is it so obvious in real world that the three situations below are completely wrong?.
 
-![three wrongly built accessible ramps](./wrong-a11y.jpeg)
+![three wrongly built accessible ramps](../../assets/blog/wrong-a11y.jpeg)
 
-Probably because those three ramps were not build by disabled people, or maybe because they didn't put themselves in their shoes?
+Probably because those three ramps were not built by disabled people, or maybe because they didn't put themselves in their shoes?
 We can even think that these situations were not properly tested from the enduser perspective, nor during the design phase nor the building phase.
-But it's very clear to me that these three situations are definetely wrongly done, and a person using a wheelchair will always have problems using these three "accessible" ramps.
+But it's very clear to me that these three situations are definitely wrongly done, and a person using a wheelchair will always have problems using these three "accessible" ramps.
 
-### Web Accessibility (a11y)
+## Web Accessibility (a11y)
 
 > Web accessibility means that websites, tools, and technologies are designed and developed so that people with disabilities can use them.
 > More specifically, people can: perceive, understand, navigate, interact with the Web, and contribute to the Web
 >
 > Source: [The World Wide Web Consortium (W3C)](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
 
-Let's see how can we translate this reality to the online world, because for some of us, not visually impaired people, it's not so obvious to identify a non-accessible website.
+Let's see how we can translate this reality to the online world, because for some of us, not visually impaired people, it's not so obvious to identify a non-accessible website.
 Let me show you an example. If you are in an e-commerce, an online shop for example, and you call the support team because you may want to find your latest purchases,
 but you don't know how to find them, a typical answer from them could be "you need to click on the button in the top right corner".
 Or maybe you want to change your password, or your email address, so they could say "you need to click on the button with the engine icon".
-The problem here is that for visually impaired people such as blind people, there's no such as thing as top right corner or button with the engine icon.
+The problem here is that for visually impaired people such as blind people, there's no such thing as top right corner or button with the engine icon.
 So we need to have these situations in mind when we develop a new website.
 
-Based on number from the [World Health Organization (WHO)](https://www.who.int/news-room/fact-sheets/detail/blindness-and-visual-impairment),
-globally, it is estimated that at least 2.2 billion people have a vision impairment or blindness, of whom at least 1 billion have a vision impairment that could have been prevented or has yet to be addressed.
+Based on the numbers from the [World Health Organization (WHO)](https://www.who.int/news-room/fact-sheets/detail/blindness-and-visual-impairment), it is estimated that globally, at least 2.2 billion people have a vision impairment or blindness, of whom at least 1 billion have a vision impairment that could have been prevented or has yet to be addressed.
 This 1 billion people includes those with moderate or severe distance vision impairment or blindness due to unaddressed refractive error, as well as near vision impairment caused by unaddressed presbyopia.
 
-### Testing Web Accessibility (a11y)
+## Testing Web Accessibility (a11y)
 
 Automated accessibility tests can free up your QA team from manual testing every part of your application, but they can’t automatically make your site accessible.
 Only 20% to 50% of all accessibility issues can be detected with automated tests, so we need to consider those automated accessibility tests as one step of a larger testing process.
 
 I would like to give you an introduction about the tools that I usually use to test accessibility during my development process.
 
-I've separated this article in three parts: testing the code, testing the DOM, and testing manually in the browser.
+I've structured this article in three parts: testing the code, testing the DOM, and testing manually in the browser.
 
-#### Testing the code
+### Testing the code
 
 I've created a React application with three tiny components: a button, a fake button, which is an anchor link with the role button, and an image.
 In the main application I've put a bunch of accessibility errors, so let's see how can I find them using some tools.
 
 You can find the code of the application this [GitHub repository](https://github.com/bolonio/testing-web-a11y)
 
-##### react-axe
+#### Testing your application from the browser console log
 
 The first tool I would like to show you is [react-axe](https://github.com/dequelabs/react-axe). The company behind the development of the axe tools family is [Dequelabs](https://www.deque.com/axe/).
 
@@ -84,12 +83,12 @@ if (process.env.NODE_ENV !== "production") {
 This library will test your React application with the axe-core accessibility testing library while it's running, and you will be able to see the results in the Chrome DevTools console.
 A severity level is also assigned for each violation. The possible levels are: Minor, Moderate, Serious, Critical.
 
-![A slide of a presentation on how to use the tool react-axe](./react-axe.jpeg)
+![A slide of a presentation on how to use the tool react-axe](../../assets/blog/react-axe.jpeg)
 
 Each violation includes the description of the issue, the HTML element in where the violation was found, and a link to the [dequeuniversity](https://dequeuniversity.com/), a full documentation source with detailed information about the issue, and the steps to solve it.
-Several ocurrences of the same violation are grouped.
+Several occurrences of the same violation are grouped.
 
-##### eslint-plugin-jsx-a11y
+#### Using a Linter, a tool that analyzes source code to flag potential errors, bugs, and vulnerabilities
 
 If you're using eslinter in your application, you can include the [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) with the accessibility rules.
 You just need to create the file .eslintrc.json in the root folder of your application.
@@ -109,9 +108,9 @@ It would be enough including `"extends": ["plugin:jsx-a11y/recommended"]`, but y
 
 The linting issues will be displayed directly in the code editor and in the terminal as well.
 
-![A slide of a presentation on how to use the tool eslint-plugin-jsx-a11y](./eslint-plugin-jsx-a11y.jpeg)
+![A slide of a presentation on how to use the tool eslint-plugin-jsx-a11y](../../assets/blog/eslint-plugin-jsx-a11y.jpeg)
 
-##### jest-axe
+#### Writing your own unit test with jest
 
 Another tool, as well from the axe tool family, is [jest-axe](https://github.com/nickcolley/jest-axe).
 
@@ -141,17 +140,17 @@ it("should demonstrate this matcher`s usage with react", async () => {
 
 The results of the test will be displayed in the terminal when running the test.
 
-![A slide of a presentation on how to use the tool jest-axe](./jest-axe.jpeg)
+![A slide of a presentation on how to use the tool jest-axe](../../assets/blog/jest-axe.jpeg)
 
 You should include these kind of accessibility tests in your build pipeline, so code with accessibility issues shouldn't be deployed to production.
 As well you can use the results of these tests to build reports for your product team or for your development team.
 
-#### Testing the DOM
+### Testing the DOM
 
 Maybe you can think you're done with the development process, or maybe you've inherited an old codebase or an already finished application where no one took care of the web accessibility.
 Then you would need the whole DOM structure of the application.
 
-##### axe-cli
+#### axe-cli
 
 Another excellent tool from the axe tool family is [axe-cli](https://github.com/dequelabs/axe-cli), that provides a command line interface for axe to run quick accessibility tests.
 
@@ -163,12 +162,12 @@ $ npm install -g axe-cli
 
 You can run the `axe https://www.adrianbolonio.com/` command in your CLI, followed by the URL of the page you wish to test.
 
-![A slide of a presentation on how to use the tool axe-cli](./axe-cli.jpeg)
+![A slide of a presentation on how to use the tool axe-cli](../../assets/blog/axe-cli.jpeg)
 
 The same as with react-axe, each violation includes the description of the issue, the HTML element in where the violation was found, and a link to the [dequeuniversity](https://dequeuniversity.com/), a full documentation source with detailed information about the issue, and the steps to solve it.
 Several ocurrences of the same violation are grouped. The results can be saved as JSON data, using the `--save` and `--dir` flags.
 
-##### pa11y
+#### pa11y
 
 Another similar tool is [pa11y](http://pa11y.org/).
 A command-line interface which loads web pages and highlights any accessibility issues it finds. Useful for when you want to run a one-off test against a web page.
@@ -182,7 +181,7 @@ $ npm install -g pa11y
 
 You can run the `pa11y` command in your CLI, followed by the URL of the page you wish to test.
 
-![A slide of a presentation on how to use the tool pa11y](./pa11y.jpeg)
+![A slide of a presentation on how to use the tool pa11y](../../assets/blog/pa11y.jpeg)
 
 It could be quite tedious to test one url at a time, so the interesting thing for the pa11y library is its CI-centric accessibility test runner.
 The CI runs accessibility tests against multiple URLs and reports on any issues.
@@ -192,9 +191,9 @@ One interesting feature is that it can run actions before Pa11y tests the page.
 Actions are additional interactions that you can make Pa11y perform before the tests are run.
 They allow you to do things like click on a button, enter a value in a form, wait for a redirect, or wait for the URL fragment to change.
 
-![A slide of a presentation on how to use the tool pa11yci](./pa11yci.jpeg)
+![A slide of a presentation on how to use the tool pa11yci](../../assets/blog/pa11yci.jpeg)
 
-##### lighthouse
+#### lighthouse
 
 [Lighthouse](https://developers.google.com/web/tools/lighthouse/) is a tool developed by Google, and it's included in the Chrome DevTools, but you can as well execute it from the terminal.
 Google define it as an open-source, automated tool for improving the quality of web pages.
@@ -213,69 +212,80 @@ You can run the `lighthouse` command in the terminal. Adding `--view` will immed
 $ npm lighthouse www.stackoverflow.com --view
 ```
 
-![A slide of a presentation on how to use the tool lighthouse](./lighthouse.jpeg)
+![A slide of a presentation on how to use the tool lighthouse](../../assets/blog/lighthouse.jpeg)
 
 At the end of the analysis, the tools will generate a final report, either HTML or JSON/CSV, that can be use for reporting purposes.
 
-#### Testing in the browser
+### Testing in the browser
 
 As I said at the beginning, we need to remember that only 20% to 50% of all accessibility issues can be detected with automated tests,
 so we need to consider those automated accessibility tests as one step of a larger testing process.
 Manual testing is as important as automated testing, so I will show you some of the manual testing tools that I often use.
 
-##### axe chrome extension
+#### axe chrome extension
 
 The company behind the development of the axe tools family, [Dequelabs](https://www.deque.com/axe/), has some browser extensions to test the accessibility of your website.
 After installing the extension, you can find it under the development tools of your browser.
 You can perform a full analysis, and as the previous axe tools I've talked about, they will show you all the violations found in the analyzed website.
 Each violation includes the description of the issue, the HTML element in where the violation was found, and a full documentation source with detailed information about the issue, and the steps to solve it.
-[You can find the extensions here](https://www.deque.com/axe/axe-for-web/).
+[You can find the axe extension here](https://www.deque.com/axe/axe-for-web/).
 
-![A slide of a presentation on how to use the tool axe chrome extension](./axe-chrome.jpeg)
+![A slide of a presentation on how to use the tool axe chrome extension](../../assets/blog/axe-chrome.jpeg)
 
-##### ARC Toolkit
+#### ARC Toolkit
 
 Another similar tool is ARC Toolkit, developed by [The Paciello Group](https://www.paciellogroup.com/).
 ARC Toolkit is a professional-level accessibility testing tool that gives you the power to quickly and efficiently evaluate screens for accessibility and uncover issues related to the WCAG 2.1 Level A and AA guidelines.
 This Chrome extension enables you to easily drill down into code level issues and gain in-depth insight into the accessibility of the screen.
-[You can find the extension here](https://www.paciellogroup.com/toolkit/).
+[You can find the ARC Toolkit extension here](https://www.paciellogroup.com/toolkit/).
 
-![A slide of a presentation on how to use the tool ARC toolkit](./arc-chrome.jpeg)
+![A slide of a presentation on how to use the tool ARC toolkit](../../assets/blog/arc-chrome.jpeg)
 
-##### Accessibility Insights
+#### Accessibility Insights
 
 Accessibility Insights define this tools as an extension for Chrome and Microsoft Edge Insider that helps developers find and fix accessibility issues in web apps and sites.
 One of the many features of this extension, and the one I use more, is the "tab stops" map. This tool will create a tab map while you navigate through the website using the tab key.
 You can use this map to determine if the navigation using the tab key is relevant and consistent with the content of your website.
-[You can find the extensions here](https://accessibilityinsights.io/docs/en/web/overview).
+[You can find the Accessibility Insights extension here](https://accessibilityinsights.io/docs/en/web/overview).
 
-![A slide of a presentation on how to use the tool accessibility insights](./accessibility-insights.jpeg)
+![A slide of a presentation on how to use the tool accessibility insights](../../assets/blog/accessibility-insights.jpeg)
 
-##### WAVE - Web Accessibility Evaluation Tool
+#### WAVE - Web Accessibility Evaluation Tool
 
 WAVE is a suite of evaluation tools that help authors make their web content more accessible to individuals with disabilities.
 WAVE can identify many accessibility and Web Content Accessibility Guideline (WCAG) errors, but also facilitates human evaluation of web content.
 After installing the extension, you can find it under the extension bar in your browser.
 In my opinion this is the most complete extension of all of the ones I've talked about in this article.
-[You can find the extensions here](https://wave.webaim.org/extension/).
+[You can find the Web Accessibility Evaluation Tool extension here](https://wave.webaim.org/extension/).
 
-![A slide of a presentation on how to use the tool WAVE chrome extension](./wave-chrome.jpeg)
+![A slide of a presentation on how to use the tool WAVE chrome extension](../../assets/blog/wave-chrome.jpeg)
 
-##### NoCoffee - Vision Simulator
+#### NoCoffee - Vision Simulator
 
-An interesting tool is NoCoffee.
+An interesting tool is [NoCoffee](https://accessgarage.wordpress.com/).
 NoCoffee is an extension for Chrome, which can be helpful for understanding the problems faced by people with slight to extreme vision problems, such as: low acuity, low contrast sensitivity, or colorblindness.
 This extension simulates how someone with these vision problems will see your website.
-You can find the extension [here](https://accessgarage.wordpress.com/).
+[You can find NoCoffee extension here](https://accessgarage.wordpress.com/).
 
-![A slide of a presentation on how to use the tool NoCoffee](./nocoffee-chrome.jpeg)
+![A slide of a presentation on how to use the tool NoCoffee](../../assets/blog/nocoffee-chrome.jpeg)
 
-### Conclusions
+#### Funkify
+
+Another usefull tool is [Funkify](https://www.funkify.org).
+Funkify is an extension for Chrome that helps you experience the web and interfaces through the eyes of extreme users with different abilities and disabilities.
+It's a cool extension that simulates several kinds of disabilities, like dyslexia, motoric problems and low vision.
+[You can find Funkify extension here](https://www.funkify.org).
+
+## Conclusions
 
 Our role as frontend and web developers is to create clear interfaces to make people understand and care about data, independently of their disabilities or impairments,
 but what we, developers, often forget is to ensure that the code we write follows the Web Content Accessibility Guidelines (WCAG), and the only way to achieve that is testing, either manual or automated.
 
-We need to understand that the responsibility to create accessible apps doesn't belong to the developers or testers, but to the whole team, including PM or UX/UI designers.
+> “The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.”
+>
+> Tim Berners-Lee, W3C Director and inventor of the World Wide Web
+
+We need to understand that the responsibility to create accessible apps doesn't belong to the developers or testers, but to the whole team, including Project Managers, and user experience (UX) and user interafece (UI) designers.
 
 I would love to leave you with a sentence that represents, in my opinion, what values for accessibility we, developers, should have.
 
@@ -283,7 +293,7 @@ I would love to leave you with a sentence that represents, in my opinion, what v
 >
 > Trenton Moss, Owner of Webcredible Consultancy Firm, UK
 
-![A quote that says "accessibility is not a feature"](./a11y-is-not-a-feature.jpeg)
+![A quote that says "accessibility is not a feature"](../../assets/blog/a11y-is-not-a-feature.jpeg)
 
 If you have any question to ask, any recommendation to make, or any appreciation to give, please feel free to contact me.
 The best way to reach me is either via my twitter at [@bolonio](https://twitter.com/bolonio) or you can send me an email at [adrian.bolonio@gmail.com](mailto:adrian.bolonio@gmail.com).
