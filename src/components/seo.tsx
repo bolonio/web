@@ -5,9 +5,9 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import Helmet from "react-helmet"
+import useSiteMetadata from "../hooks/useSiteMetadata"
 
 interface Meta {
   name: string
@@ -18,31 +18,14 @@ interface Props {
   title: string
   lang?: string
   meta?: Meta[]
-  keywords?: string[]
   description?: string
 }
 
 export const SEO = (props: Props) => {
+  const { title, description, author } = useSiteMetadata()
   const lang = props.lang || "en"
   const meta = props.meta || []
-  const keywords = props.keywords || []
-  const description = props.description || ""
-
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `
-  )
-
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = props.description || description
 
   return (
     <Helmet
@@ -50,7 +33,7 @@ export const SEO = (props: Props) => {
         lang,
       }}
       title={props.title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${title}`}
       meta={[
         {
           content: metaDescription,
@@ -73,7 +56,7 @@ export const SEO = (props: Props) => {
           name: `twitter:card`,
         },
         {
-          content: site.siteMetadata.author,
+          content: author,
           name: `twitter:creator`,
         },
         {
@@ -84,16 +67,7 @@ export const SEO = (props: Props) => {
           content: metaDescription,
           name: `twitter:description`,
         },
-      ]
-        .concat(
-          keywords.length > 0
-            ? {
-                content: keywords.join(`, `),
-                name: `keywords`,
-              }
-            : []
-        )
-        .concat(meta)}
+      ].concat(meta)}
     />
   )
 }

@@ -1,19 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby"
+import { SiteMetadata } from "../utils/types"
 
 interface Props {
   site: {
-    siteMetadata: {
-      title: string
-      author: string
-      description: string
-      social: {
-        twitter: string
-        github: string
-        linkedin: string
-        instagram: string
-      }
-      blogPath: string
-    }
+    siteMetadata: SiteMetadata
   }
 }
 
@@ -25,13 +15,17 @@ const useSiteMetadata = () => {
           title
           author
           description
+          bio
           social {
             twitter
             github
             linkedin
             instagram
           }
-          blogPath
+          navigation {
+            title
+            slug
+          }
         }
       }
     }

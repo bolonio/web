@@ -1,26 +1,59 @@
-import { graphql, PageRendererProps, useStaticQuery } from "gatsby"
+import { PageRendererProps } from "gatsby"
 import React from "react"
 import { Layout } from "../components/layout"
 import { SEO } from "../components/seo"
+import { talks } from "../../content/talks/talks"
+import { Talk } from "../components/talk"
+import { Content } from "../components/content"
+import { TalksType, TalkType } from "../utils/types"
+import styled from "styled-components"
 
 type Props = PageRendererProps
 
-export const Talks = (props: Props) => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+const Section = styled(Content)`
+  padding: 50px 0;
+`
 
+const SectionHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+`
+
+const Header = styled.h2`
+  margin: 0;
+  margin-bottom: 50px;
+  font-size: 3rem;
+`
+
+const YearHeader = styled.h2`
+  margin: 0;
+  margin-bottom: 30px;
+`
+
+const TalkContainer = styled.div`
+  margin-bottom: 40px;
+`
+
+const Talks = (props: Props) => {
   return (
-    <Layout location={props.location} title={data.site.siteMetadata.title}>
-      <SEO title="404: Not Found" />
-      <h1>My Talks</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <Layout location={props.location}>
+      <SEO title="My talks" />
+      <Section>
+        <SectionHeader>
+          <Header>Talks</Header>
+        </SectionHeader>
+        {talks.map((talk: TalksType, i) => (
+          <React.Fragment>
+            <YearHeader key={i}>{talk.year}</YearHeader>
+            <TalkContainer>
+              {talk.talks.map((talk: TalkType, i) => (
+                <Talk talk={talk} />
+              ))}
+            </TalkContainer>
+          </React.Fragment>
+        ))}
+      </Section>
     </Layout>
   )
 }

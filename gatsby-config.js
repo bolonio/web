@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Adrián Bolonio`,
     author: `Adrián Bolonio`,
+    bio: `Hi, my name is Adrián Bolonio. I’m an experienced Web Team Lead, Frontend Developer, and Web Accessibility (a11y) advocate. I'm from Spain, but since 2012 I've been living and working in Vienna (Austria). When I’m not at the office I enjoy a good read, working my way through any delicious recipe, and indulging my love for travelling to new places.`,
     description: `Adrián Bolonio - description`,
     siteUrl: `https://www.adrianbolonio.com/`,
     social: [
@@ -12,7 +13,6 @@ module.exports = {
         instagram: `https://instagram.com/bolonio`,
       },
     ],
-    blogPath: `/blog`,
     navigation: [
       {
         title: `Home`,
@@ -23,12 +23,12 @@ module.exports = {
         slug: `/blog`,
       },
       {
-        title: `About`,
-        slug: `/about`,
-      },
-      {
         title: `Talks`,
         slug: `/talks`,
+      },
+      {
+        title: `About`,
+        slug: `/about`,
       },
     ],
   },
@@ -45,6 +45,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content/assets`,
         name: `assets`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/talks`,
+        name: `talks`,
       },
     },
     {
@@ -136,18 +143,18 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-155221350-1`,
       },
     },
     `gatsby-plugin-feed-mdx`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Adrián Bolonio`,
+        short_name: `Adrián Bolonio`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#f3f7f9`,
         display: `minimal-ui`,
         icon: `content/assets/gatsby-icon.png`,
       },

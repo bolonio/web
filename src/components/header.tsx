@@ -1,36 +1,59 @@
 import React from "react"
 import styled from "styled-components"
-import useNavigation from "../hooks/use-navigation"
 import { Link } from "gatsby"
+import { Content } from "./content"
+import useSiteMetadata from "../hooks/useSiteMetadata"
 
-const Main = styled.header`
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 15px;
+const HeaderLogo = styled.span`
+  font-size: 1.5rem;
+  font-weight: 300;
 `
 
-const MenuLink = styled.span`
-  color: #1b1b1b;
-  font-weight: 400;
+const StyledNav = styled.nav`
+  display: flex;
+  padding: 15px 0;
+  justify-content: space-between;
+  align-items: baseline;
+`
+
+const MenuLink = styled(Link)`
+  font-weight: 300;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, Open Sans,
     sans-serif !important;
-  margin-right: 15px;
+  margin-right: 25px;
   font-size: 1.25rem;
+  text-decoration: none;
+  box-shadow: none;
+
+  :hover {
+    box-shadow: 0 2px 0 0 #0c1e29;
+  }
+  :focus {
+    outline: 3px solid #0c1e29;
+    outline-offset: 0.5rem;
+  }
 `
 
 export const Header = () => {
-  // const rootPath = `/`
-  const navigation = useNavigation()
+  const { navigation } = useSiteMetadata()
   return (
-    <Main>
-      <div>HERE IT COMES THE LOGO</div>
-      <div>
-        {navigation.map(item => (
-          <Link key={item.slug} to={item.slug}>
-            <MenuLink>{item.title}</MenuLink>
-          </Link>
-        ))}
-      </div>
-    </Main>
+    <header>
+      <Content>
+        <StyledNav>
+          <HeaderLogo>Adrián Bolonio</HeaderLogo>
+          <div>
+            {navigation.map(item => (
+              <MenuLink
+                key={item.slug}
+                to={item.slug}
+                aria-label={`Go to ${item.title}`}
+              >
+                <span>{item.title}</span>
+              </MenuLink>
+            ))}
+          </div>
+        </StyledNav>
+      </Content>
+    </header>
   )
 }
