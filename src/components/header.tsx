@@ -43,11 +43,7 @@ export const Header = () => {
           <HeaderLogo>Adrián Bolonio</HeaderLogo>
           <div>
             {navigation.map(item => (
-              <MenuLink
-                key={item.slug}
-                to={item.slug}
-                aria-label={`Go to ${item.title}`}
-              >
+              <MenuLink key={item.slug} to={item.slug}>
                 <span>{item.title}</span>
               </MenuLink>
             ))}
