@@ -2,13 +2,9 @@ import React from "react"
 import styled from "styled-components"
 import { Content } from "./content"
 import useSiteMetadata from "../hooks/useSiteMetadata"
+import { BlueContainer } from "./blueContainer"
 
 export const Bio = () => {
-  const BioContainer = styled.div`
-    background-color: #f3f7f9;
-    padding: 50px 0;
-  `
-
   const BioText = styled.p`
     font-weight: 300;
     font-size: 1.75rem;
@@ -16,15 +12,18 @@ export const Bio = () => {
     @media screen and (max-width: 1000px) {
       font-size: 1.5rem;
     }
+    @media screen and (max-width: 800px) {
+      font-size: 1.25rem;
+    }
   `
 
   const { bio } = useSiteMetadata()
 
   return (
-    <BioContainer>
+    <BlueContainer>
       <Content>
         <BioText>{bio}</BioText>
       </Content>
-    </BioContainer>
+    </BlueContainer>
   )
 }

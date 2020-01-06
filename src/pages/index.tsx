@@ -21,6 +21,9 @@ const BlogIndex = (props: Props) => {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    @media screen and (max-width: 700px) {
+      flex-direction: column;
+    }
   `
 
   const SectionHeaderLink = styled(Link)`
@@ -35,12 +38,18 @@ const BlogIndex = (props: Props) => {
       outline: 3px solid #0c1e29;
       outline-offset: 0.5rem;
     }
+    @media screen and (max-width: 700px) {
+      margin-bottom: 40px;
+    }
   `
 
   const Header = styled.h2`
     margin: 0;
     margin-bottom: 50px;
     font-size: 2.5rem;
+    @media screen and (max-width: 700px) {
+      margin-bottom: 20px;
+    }
   `
 
   const PostsGrid = styled.div`

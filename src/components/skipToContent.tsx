@@ -6,7 +6,7 @@ const SkipContainer = styled.a`
   top: 0;
   right: 0;
   width: 100%;
-  padding: 20px 0;
+  padding: 15px 0;
   color: inherit;
   text-decoration: none;
   box-shadow: none;

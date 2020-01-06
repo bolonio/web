@@ -22,6 +22,9 @@ const TalkContainer = styled.div`
 `
 const TalkConference = styled.span`
   font-weight: 400;
+  @media screen and (max-width: 700px) {
+    margin-bottom: 10px;
+  }
 `
 const TalkItem = styled.span`
   font-size: 1.25rem;
@@ -29,6 +32,7 @@ const TalkItem = styled.span`
   @media screen and (max-width: 700px) {
     margin-left: 0;
     margin-right: 25px;
+    margin-bottom: 10px;
   }
 `
 
@@ -51,6 +55,8 @@ const TalkGroup = styled.div`
   align-items: center;
   @media screen and (max-width: 700px) {
     justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
   }
 `
 

@@ -21,6 +21,9 @@ interface BlogPostTemplateProps extends PageRendererProps {
 
 const Article = styled.article`
   padding: 0 1.5rem;
+  @media screen and (max-width: 700px) {
+    padding: 0;
+  }
 `
 
 const BlogPostTemplate = (props: BlogPostTemplateProps) => {

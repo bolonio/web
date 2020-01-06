@@ -36,7 +36,7 @@ const PostTitle = styled.h2`
   font-weight: 400;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, Open Sans,
     sans-serif !important;
-  font-size: 2rem;
+  font-size: 1.75rem;
   @media screen and (max-width: 1000px) {
     font-size: 1.5rem;
   }

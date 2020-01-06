@@ -7,6 +7,9 @@ import useSiteMetadata from "../hooks/useSiteMetadata"
 const HeaderLogo = styled.span`
   font-size: 1.5rem;
   font-weight: 300;
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
 `
 
 const StyledNav = styled.nav`
@@ -34,6 +37,14 @@ const MenuLink = styled(Link)`
   }
 `
 
+const Menu = styled.div`
+  @media screen and (max-width: 700px) {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+`
+
 export const Header = () => {
   const { navigation } = useSiteMetadata()
   return (
@@ -41,13 +52,13 @@ export const Header = () => {
       <Content>
         <StyledNav>
           <HeaderLogo>Adrián Bolonio</HeaderLogo>
-          <div>
+          <Menu>
             {navigation.map(item => (
               <MenuLink key={item.slug} to={item.slug}>
                 <span>{item.title}</span>
               </MenuLink>
             ))}
-          </div>
+          </Menu>
         </StyledNav>
       </Content>
     </header>
